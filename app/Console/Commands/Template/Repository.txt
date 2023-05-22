@@ -1,0 +1,13 @@
+<?php
+
+namespace Modules\{model}\src\Repositories;
+use App\Repositories\BaseRepository;
+
+class {model}Repository extends BaseRepository implements {model}RepositoryInterface
+{
+    //lấy model tương ứng
+    public function getModel()
+    {
+        // return {model}::class;
+    }
+}
