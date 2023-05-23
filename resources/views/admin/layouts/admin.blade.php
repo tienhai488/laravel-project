@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>@yield('title')</title>
+    <title>@yield('title') - TienHai</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('asset_admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -19,6 +19,9 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('asset_admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('asset_admin/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+
+
 
 </head>
 
@@ -108,6 +111,11 @@
     <script src="{{ asset('asset_admin/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('asset_admin/js/demo/chart-pie-demo.js') }}"></script>
 
+    <!-- Page level plugins -->
+    <script src="{{ asset('asset_admin/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('asset_admin/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+
+    <script src="{{ asset('asset_admin/js/demo/datatables-demo.js') }}"></script>
 </body>
 
 </html>

@@ -3,20 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use Modules\User\src\Http\Controllers\UserController;
 
-Route::prefix('user')->group(function(){
-    Route::get('/',[UserController::class,'index']);
+Route::prefix('admin')->name('admin.')->group(function(){
+    Route::prefix('user')->name('user.')->group(function(){
+        Route::get('/',[UserController::class,'index'])->name('index');
+        
+        Route::get('add',[UserController::class,'add'])->name('add');
 
-    Route::get('/detail/{id}',[UserController::class,'detail']);
-
-    Route::get('add',[UserController::class,'add']);
+    });
 });
-
-// Route::group(['namespace' => 'Modules\User\src\Http\Controllers'], function () {
-//     // Controllers Within The "App\Http\Controllers\Admin" Namespace
-//     Route::prefix('user')->group(function () {
-//         Route::get('/', "UserController@index");
-
-//         Route::get('/detail/{id}', "UserController@detail");
-
-//     });
-// });

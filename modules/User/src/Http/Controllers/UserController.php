@@ -16,15 +16,8 @@ class UserController extends Controller
 
     public function index()
     {
-        // return view("user::lists");
-        return view("admin.layouts.admin");
+        return view("user::list");
     }
-
-    public function detail($id)
-    {
-        return view("user::detail", compact("id"));
-    }
-
     public function add()
     {
         return "<h1>Add User</h1>";
