@@ -116,5 +116,8 @@ class ModuleServiceProvider extends ServiceProvider
         $this->commands([
             TienHaiCommand::class
         ]);
+
+        // Khai báo repository muốn sử dụng
+        // $this->app->singleton();
     }
 }

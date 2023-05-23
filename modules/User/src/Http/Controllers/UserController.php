@@ -16,9 +16,8 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = $this->userRepo->getUser(3);
-        dd($users);
-        return view("user::lists");
+        // return view("user::lists");
+        return view("admin.layouts.admin");
     }
 
     public function detail($id)
