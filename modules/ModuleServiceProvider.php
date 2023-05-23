@@ -5,6 +5,7 @@ namespace modules;
 use Modules\User\Src\Http\Middlewares\DemoMiddleware;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
+use Modules\User\seeders\UserSeeder;
 use Modules\User\src\Commands\TienHaiCommand;
 
 class ModuleServiceProvider extends ServiceProvider
@@ -40,6 +41,10 @@ class ModuleServiceProvider extends ServiceProvider
         // Khai báo views
         // Gọi view thì ta sử dụng: view('Demo::index'), @extends('Demo::index'), @include('Demo::index')
         $this->loadViews($moduleName);
+
+        // if (File::exists($modulePath . "seeders")) {
+        //     $this->loadSeeder($modulePath . "seeders");
+        // }
 
     }
 
@@ -114,10 +119,12 @@ class ModuleServiceProvider extends ServiceProvider
 
         // Khai báo commands
         $this->commands([
-            TienHaiCommand::class
+            TienHaiCommand::class,
         ]);
 
         // Khai báo repository muốn sử dụng
         // $this->app->singleton();
+
+        
     }
 }
