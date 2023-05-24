@@ -16,11 +16,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $user = new User();
-        $user->name = "TienHai";
-        $user->email = "tienhai@gmail.com";
-        $user->password = Hash::make("123456");
-        $user->group_id = 1;
-        $user->save();
+        for($i = 'a';$i<='z';$i++){
+            $user = new User();
+            $user->name = "Nguyen Van $i";
+            $user->email = "nguyenvan$i@gmail.com";
+            $user->group_id = 1;
+            $user->password = Hash::make('123456');
+            $user->save();
+        }
     }
 }

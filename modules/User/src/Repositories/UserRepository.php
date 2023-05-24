@@ -16,4 +16,8 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
     {
         return $this->model->limit($limit)->get();
     }
+
+    public function getFieldList(){
+        return $this->model->select(['id','name','email','group_id','created_at'])->orderBy('created_at','desc')->get();
+    }
 }
