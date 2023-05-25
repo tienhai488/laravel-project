@@ -48,6 +48,7 @@ class CreateModule extends Command
             $pathHttp = $pathSrc.'/Http';
             $pathControllers = $pathHttp.'/Controllers';
             $pathMiddlewares = $pathHttp.'/Middlewares';
+            $pathRequests = $pathHttp.'/Requests';
             
             $pathModels = $pathSrc.'/Models';
 
@@ -56,6 +57,7 @@ class CreateModule extends Command
             File::makeDirectory($pathHttp,0755,true,true);
             File::makeDirectory($pathControllers,0755,true,true);
             File::makeDirectory($pathMiddlewares,0755,true,true);
+            File::makeDirectory($pathRequests,0755,true,true);
             File::makeDirectory($pathModels,0755,true,true);
 
             $pathRepositories = $pathSrc.'/Repositories';

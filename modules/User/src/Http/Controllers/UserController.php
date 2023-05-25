@@ -39,11 +39,8 @@ class UserController extends Controller
     public function data()
     {
         $list = $this->userRepo->getFieldList();
-        foreach ($list as $key => $user) {
-            $formattedDate = Carbon::parse($user->created_at)->format('d/m/Y H:i:s');
-
-            $user['tgian'] = $formattedDate;
-
+        foreach ($list as $key => $item) {
+            $item['tgian'] = Carbon::parse($item->created_at)->format('d/m/Y H:i:s');
         }
         return DataTables::of($list)
             ->addColumn('update', function(User $user) {

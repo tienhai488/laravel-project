@@ -106,6 +106,7 @@
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('asset_admin/js/sb-admin-2.min.js') }}"></script>
 
+
     <!-- Page level plugins -->
     {{-- <script src="{{ asset('asset_admin/vendor/chart.js/Chart.min.js') }}"></script> --}}
 
@@ -122,6 +123,7 @@
     {{-- <script>
         let table = new DataTable('#dataTable');
     </script> --}}
+    <script src="{{ asset('asset_admin/js/custom.js?ver=' . rand()) }}"></script>
     @yield('script')
 </body>
 
