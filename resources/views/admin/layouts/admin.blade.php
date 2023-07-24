@@ -21,7 +21,7 @@
     <link href="{{ asset('asset_admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
     {{-- <link href="{{ asset('asset_admin/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet"> --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/v/bs5/dt-1.13.4/datatables.min.css">
-
+    @yield('style')
 
 
 </head>
@@ -99,6 +99,7 @@
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="{{ asset('asset_admin/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('asset_admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('asset_admin/ckeditor/ckeditor.js') }}"></script>
 
     <!-- Core plugin JavaScript-->
     <script src="{{ asset('asset_admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
@@ -123,7 +124,9 @@
     {{-- <script>
         let table = new DataTable('#dataTable');
     </script> --}}
+    <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
     <script src="{{ asset('asset_admin/js/custom.js?ver=' . rand()) }}"></script>
+
     @yield('script')
 </body>
 

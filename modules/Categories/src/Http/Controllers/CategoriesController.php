@@ -14,6 +14,7 @@ class CategoriesController extends Controller
     protected $cateRepo;
     public function __construct(CategoriesRepository $cateRepo)
     {
+        // dd(trans('categories::auth.title',['name' => 'TienHai']));
         $this->cateRepo = $cateRepo;
     }
 
