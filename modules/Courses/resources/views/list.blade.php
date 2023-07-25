@@ -15,6 +15,9 @@
                     <thead>
                         <tr>
                             <th>STT</th>
+                            <th>Tên khóa học</th>
+                            <th>Giá tiền</th>
+                            <th>Tình trạng</th>
                             <th>Thời gian</th>
                             <th>Sửa</th>
                             <th>Xóa</th>
@@ -26,7 +29,7 @@
     </div>
 @endsection
 
-{{-- @section('script')
+@section('script')
     <script>
         $(document).ready(function() {
             $('#dataTable').DataTable({
@@ -40,10 +43,10 @@
                         'data': 'name'
                     },
                     {
-                        'data': 'email'
+                        'data': 'price'
                     },
                     {
-                        'data': 'group_id'
+                        'data': 'status'
                     },
                     {
                         'data': 'tgian'
@@ -58,4 +61,4 @@
             });
         });
     </script>
-@endsection --}}
+@endsection

@@ -9,7 +9,7 @@
         <div class="form-group col-6">
             <label for="">Tên khóa học</label>
             <input name="name" type="text"
-                class="form-control {{ $errors->any() ? ($errors->has('name') ? 'is-invalid' : 'is-valid') : '' }}"
+                class="form-control form-name {{ $errors->any() ? ($errors->has('name') ? 'is-invalid' : 'is-valid') : '' }}"
                 placeholder="Tên khóa học..." value="{{ old('name') }}" />
             @error('name')
                 <div class="invalid-feedback">
@@ -20,7 +20,7 @@
         <div class="form-group col-6">
             <label for="">Slug</label>
             <input name="slug" type="text"
-                class="form-control {{ $errors->any() ? ($errors->has('slug') ? 'is-invalid' : 'is-valid') : '' }}"
+                class="form-control form-slug {{ $errors->any() ? ($errors->has('slug') ? 'is-invalid' : 'is-valid') : '' }}"
                 placeholder="Slug..." value="{{ old('slug') }}" />
             @error('slug')
                 <div class="invalid-feedback">
@@ -104,7 +104,7 @@
             <label for="">Hỗ trợ học viên</label>
             <textarea class="form-control editor" placeholder="Hỗ trợ học viên..." name="support" cols="30" rows="10">{{ old('support') }}</textarea>
             @error('support')
-                <div class="invalid-feedback">
+                <div class="invalid-feedback" style="display: contents">
                     {{ $message }}
                 </div>
             @enderror
@@ -113,25 +113,49 @@
             <label for="">Mô tả khóa học</label>
             <textarea class="form-control editor" placeholder="Mô tả khóa học..." name="detail" cols="30" rows="10">{{ old('detail') }}</textarea>
             @error('detail')
-                <div class="invalid-feedback">
+                <div class="invalid-feedback" style="display: contents">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
+        <div class="form-group col-12">
+            <label for="">Danh mục khóa học</label>
+            <div class="list-cate">
+                @foreach ($categories as $cate)
+                    <div>
+                        <input type="checkbox" id="cate-{{ $cate->id }}" class="" name="categories[]"
+                            value="{{ $cate->id }}"
+                            {{ checkCategory($cate->id, old('categories')) ? 'checked' : false }}>
+                        <label for="cate-{{ $cate->id }}">{{ $cate->name }}</label>
+                    </div>
+                @endforeach
+            </div>
+            @error('categories')
+                <div class="invalid-feedback" style="display: contents">
                     {{ $message }}
                 </div>
             @enderror
         </div>
         <div class="col-12 mb-4">
             <div class="row align-items-end">
-                <div class="col-9">
+                <div class="col-8">
                     <label for="">Ảnh đại diện</label>
                     <input id="thumbnail" type="text" class="form-control" placeholder="Ảnh đại diện..."
-                        name="thumbnail">
+                        name="thumbnail" value="{{ old('thumbnail') }}">
                 </div>
                 <div class="col-1">
-                    <button id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">Choose
+                    <button id="lfm" data-input="thumbnail" data-preview="holderddd"
+                        class="btn btn-primary">Choose
                     </button>
                 </div>
-                <div class="col-2" id="holder">
+                <div class="col-3" id="holder">
                 </div>
             </div>
+            @error('thumbnail')
+                <div class="invalid-feedback" style="display: contents">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
         <div style="padding-left: 12px">
             <button type="submit" class="btn btn-primary btn-block">Thêm khóa học</button>
@@ -148,6 +172,11 @@
             width: 100% !important;
             height: auto !important;
         }
+
+        .list-cate {
+            max-height: 200px;
+            overflow: auto;
+        }
     </style>
 @endsection
 
@@ -160,5 +189,25 @@
         });
 
         $('#lfm').filemanager('image');
+
+        const holder = document.querySelector("#holder");
+        const thumbnail = document.querySelector("#thumbnail");
+
+        if (thumbnail.value) {
+            let img = document.createElement('img');
+            holder.appendChild(img);
+            holder.querySelector('img').src = thumbnail.value;
+        }
+
+        thumbnail.onchange = () => {
+            holder.innerHTML = "";
+            if (thumbnail.value) {
+                let img = document.createElement('img');
+                holder.appendChild(img);
+                holder.querySelector('img').src = thumbnail.value;
+            }
+        };
+
+        handleSlug();
     </script>
 @endsection

@@ -11,4 +11,13 @@ class CoursesRepository extends BaseRepository implements CoursesRepositoryInter
     {
         return Courses::class;
     }
+
+    public function getCourses($limit = 10)
+    {
+        return $this->model->limit($limit)->get();
+    }
+
+    public function getFieldList(){
+        return $this->model->select(['id','name','price','sale_price','status','created_at'])->orderBy('created_at','desc')->get();
+    }
 }
