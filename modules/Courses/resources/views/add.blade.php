@@ -33,7 +33,10 @@
             <select name="teacher_id"
                 class="form-control {{ $errors->any() ? ($errors->has('teacher_id') ? 'is-invalid' : 'is-valid') : '' }}">
                 <option value="0">Vui lòng chọn giảng viên</option>
-                <option value="1" {{ old('teacher_id') == 1 ? 'selected' : false }}>TienHai</option>
+                @foreach ($teachers as $item)
+                    <option value="{{ $item->id }}" {{ old('teacher_id') == $item->id ? 'selected' : false }}>
+                        {{ $item->name }}</option>
+                @endforeach
             </select>
             @error('teacher_id')
                 <div class="invalid-feedback">

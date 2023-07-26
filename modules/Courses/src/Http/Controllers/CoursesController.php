@@ -10,15 +10,17 @@ use Modules\Courses\src\Http\Requests\CoursesRequest;
 use Modules\Courses\src\Models\Course;
 use Modules\Courses\src\Models\Courses;
 use Modules\Courses\src\Repositories\CoursesRepository;
+use Modules\Teachers\src\Repositories\TeachersRepository;
 use Yajra\DataTables\Facades\DataTables;
 
 class CoursesController extends Controller
 {
-    protected $coursesRepo,$cateRepo;
-    public function __construct(CoursesRepository $coursesRepo,CategoriesRepository $cateRepo)
+    protected $coursesRepo,$cateRepo,$teacherCate;
+    public function __construct(CoursesRepository $coursesRepo,CategoriesRepository $cateRepo,TeachersRepository $teacherCate)
     {
         $this->coursesRepo = $coursesRepo;
         $this->cateRepo = $cateRepo;
+        $this->teacherCate = $teacherCate;
     }
 
     public function index()
@@ -29,7 +31,8 @@ class CoursesController extends Controller
     public function add()
     {
         $categories = $this->cateRepo->getAll();
-        return view("courses::add",compact('categories'));
+        $teachers = $this->teacherCate->getAll();
+        return view("courses::add",compact('categories','teachers'));
     }
 
     public function post_add(CoursesRequest $request)

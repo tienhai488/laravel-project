@@ -17,12 +17,14 @@ return new class extends Migration
             $table
             ->foreign('course_id')
             ->references('id')
-            ->on('courses');
+            ->on('courses')
+            ->onDelete('cascade');
             
             $table
             ->foreign('category_id')
             ->references('id')
-            ->on('categories');
+            ->on('categories')
+            ->onDelete('cascade');
         });
     }
 
